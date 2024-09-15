@@ -8,7 +8,7 @@ export default function Home() {
 
   
   return (
-    <div className="h-screen w-screen bg-white text-black overflow-hidden p-4 ">
+    <div className="min-h-screen main w-full bg-white text-black overflow-hidden p-4 ">
       <Header/>
       <Text/>
     </div>
