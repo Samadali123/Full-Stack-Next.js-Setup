@@ -1,18 +1,17 @@
 
-
-
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Dialog, DialogTitle } from './ui/dialog';
+import { Dialog, DialogTitle, DialogTrigger } from './ui/dialog';
 import { MdLocationOn, MdPhone } from 'react-icons/md';
 import Skeleton from 'react-loading-skeleton'; 
 import 'react-loading-skeleton/dist/skeleton.css'; 
-
+import { Button } from "@/components/ui/button"
 const Card = ({ user, isLoading }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDialog = () => setIsOpen(true);
   const closeDialog = () => setIsOpen(false);
+
 
   if (isLoading) {
 
@@ -57,14 +56,14 @@ const Card = ({ user, isLoading }) => {
       </div>
 
 
-      <button
+      {/* <button
         onClick={openDialog}
         className="bg-black text-white py-2 px-6 rounded-lg hover:bg-zinc-800 transition"
       >
         Fetch Details
-      </button>
-
-
+      </button> */}
+    
+      <Button className="bg-black text-white hover:text-black" onClick={openDialog} >Fetch Details</Button>
       {isOpen && (
         <Dialog
           open={isOpen}
