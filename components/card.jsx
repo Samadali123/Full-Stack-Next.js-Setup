@@ -1,16 +1,12 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Dialog, DialogTitle, DialogTrigger } from './ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogTitle, DialogTrigger } from './ui/dialog';
 import { MdLocationOn, MdPhone } from 'react-icons/md';
 import Skeleton from 'react-loading-skeleton'; 
 import 'react-loading-skeleton/dist/skeleton.css'; 
 import { Button } from "@/components/ui/button"
 const Card = ({ user, isLoading }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openDialog = () => setIsOpen(true);
-  const closeDialog = () => setIsOpen(false);
 
 
   if (isLoading) {
@@ -56,45 +52,55 @@ const Card = ({ user, isLoading }) => {
       </div>
 
 
-      {/* <button
-        onClick={openDialog}
-        className="bg-black text-white py-2 px-6 rounded-lg hover:bg-zinc-800 transition"
-      >
-        Fetch Details
-      </button> */}
     
-      <Button className="bg-black text-white hover:text-black" onClick={openDialog} >Fetch Details</Button>
-      {isOpen && (
-        <Dialog
-          open={isOpen}
-          onClose={closeDialog}
-          className="fixed inset-0 flex items-center justify-center p-4 bg-black bg-opacity-30"
-        >
-          <div className="bg-white p-6 rounded-lg max-w-md w-full">
-            <DialogTitle as="h3" className="text-xl font-semibold mb-4">
-              User Details
-            </DialogTitle>
-            <p>
-              <strong>First Name:</strong> {user.first_name}
-            </p>
-            <p>
-              <strong>Last Name:</strong> {user.last_name}
-            </p>
-            <p>
-              <strong>City:</strong> {user.city}
-            </p>
+      {/* <Dialog>
+        <DialogTrigger className='bg-black text-white rounded-xl px-3 py-1'>Fetch Details</DialogTrigger>
+        <DialogContent className="bg-white text-black flex  gap-3 flex-col items-center justify-center" >
+          <DialogTitle as="h3" className="text-xl text-center font-semibold mb-4">
+            User Details
+          </DialogTitle>
+          <DialogDescription>
+          <Image
+          width={"100"}
+          height={"200"}
+          src="/default.jpg"
+          alt={`${user.first_name} ${user.last_name}`}
+          // layout="fill"
+          className="rounded-full object-cover"
+        />
+            <p><strong>First Name:</strong> {user.first_name}</p>
+            <p><strong>Last Name:</strong> {user.last_name}</p>
+            <p><strong>City:</strong> {user.city}</p>
             <p>
               <strong>Contact Number:</strong> {user.contact_number}
             </p>
-            <button
-              onClick={closeDialog}
-              className="mt-4 bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition"
-            >
-              Close
-            </button>
-          </div>
-        </Dialog>
-      )}
+          </DialogDescription>
+        </DialogContent>
+      </Dialog> */}
+<Dialog>
+  <DialogTrigger className='bg-black text-white rounded-xl px-3 py-1'>
+    Fetch Details
+  </DialogTrigger>
+  <DialogContent className="bg-white text-black p-6 sm:p-8 lg:p-10 flex flex-col items-center justify-center gap-3 w-full max-w-md mx-auto rounded-lg">
+    <DialogTitle as="h3" className="text-xl sm:text-2xl lg:text-3xl text-center font-semibold mb-4">
+      User Details
+    </DialogTitle>
+    <DialogDescription className="flex flex-col items-center text-center">
+      <Image
+        width={100}
+        height={100}
+        src="/default.jpg"
+        alt={`${user.first_name} ${user.last_name}`}
+        className="rounded-full object-cover"
+      />
+      <p className="mt-3"><strong>First Name:</strong> {user.first_name}</p>
+      <p><strong>Last Name:</strong> {user.last_name}</p>
+      <p><strong>City:</strong> {user.city}</p>
+      <p><strong>Contact Number:</strong> {user.contact_number}</p>
+    </DialogDescription>
+  </DialogContent>
+</Dialog>
+
     </div>
   );
 };
